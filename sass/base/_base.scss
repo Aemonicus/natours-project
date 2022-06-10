@@ -1,0 +1,39 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+}
+
+/* 
+On pose la valeur qui nous intésse dans le root élément concernant le font-size pour après que nos valeurs en rem soient plus simples à calculer car 1rem = valeur de la font-size du root élément */
+/* ATTENTION ! On ne pose pas la valeur directement en px parce que cela créé des problèmes avec les gens qui modifient la taille de la police sur leur navigateur. On va préférer passer par un pourcentage pour laisser l'option à tous de modifier la taille de la police tout en gardant la possiblité pour nous d'homogénéiser nos tailles à travers tout le site */
+html {
+  font-size: 62.5%; // 1rem = 10px; 10/16 = 62.5%
+
+  @include respond(big-desktop) {
+    font-size: 75%; // 1rem = 12px; 12/16 = 75%
+  }
+
+  @include respond(tab-land) {
+    font-size: 56.25%; // 1rem = 9px; 9/16 = 56.25%
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%; // 1rem = 8px; 8/16 = 50%
+  }
+}
+
+body {
+  padding: 3rem;
+  box-sizing: border-box;
+
+  @include respond(tab-land) {
+    padding: 0;
+  }
+}
+
+::selection {
+  background-color: $color-primary;
+  color: $color-white;
+}
